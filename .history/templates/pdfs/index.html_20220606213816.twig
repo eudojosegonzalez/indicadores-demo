@@ -1,0 +1,45 @@
+{% extends 'base_pdf.html.twig' %}
+{% block title %}Reporte de Indicadores
+{% endblock %}
+{% block javascripts %}{% endblock %}
+{% block body %}
+	<div class="container">
+		<form method="post" id='f1' name='f1'>
+			<div class="card">
+				<div class="card-header">
+					<img src='{{ logo }}' alt='Logo' width='150' height='auto'/>
+					<h3>Reporte de Indicadores</h3>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-12 col-md-12 col-lg-12">
+						<div class='input-group'>
+							<label class='input-group-text' for="ente">Organismo Acreditador:&nbsp;
+								<strong>{{ ente.nombre }}</strong>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-md-12 col-lg-12">
+						<div class='input-group'>
+							<label class='input-group-text' for='reporte'>Reporte:<strong>&nbsp;{{ reporte.titulo}}</strong>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-md-12 col-lg-12">
+						<div class='input-group'>
+							<label class='input-group-text' for='periodo'>Periodo:<strong>&nbsp;{{ periodo.nombre}}</strong>
+							</label>
+						</div>
+					</div>
+				</div>
+				<hr>
+				{% for (indicador in indicadores) %}{% endfor %}
+			</div>
+		</form>
+	</div>
+{% endblock %}

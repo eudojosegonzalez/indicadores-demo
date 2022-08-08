@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_indicador_delete', {'id': indicador.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+	<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ indicador.id) }}">
+	<button class="btn btn-warning">Borrar</button>
+</form>

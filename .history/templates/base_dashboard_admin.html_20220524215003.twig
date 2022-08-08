@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Binevenido
+			{% endblock %}
+		</title>
+		<link
+		rel="shortcut icon" type="image/x-icon" href="assets/images/logo.png"/>
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		{% block stylesheets %}
+			<link href="/assets/css/global.css" rel="stylesheet" type="text/css">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+			<link
+			rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+			<!-- jQuery library -->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+			<!-- Popper JS -->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+			<!-- Latest compiled JavaScript -->
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		{% endblock %}
+
+		{% block javascripts %}{% endblock %}
+	</head>
+	<body>
+		{% block navbar %}
+			<nav class="navbar navbar-expand-sm text-white" style="background-color:#49c5c6 !important">
+				<a class="navbar-brand" href="/dashboard_admin"><img src="/assets/images/fondo1.jpeg" class="img-thumbnail" width="100px" height="auto"></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon">
+						<i class="fa-solid fa-bars"></i>
+					</span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item">
+							<a href="/user/" title='Gestión de Usuarios'>Usuarios</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-light" href="#" title='Gestión de Categorias'>Indicadores</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-light" href="#" title='Gestión de Procesos'>Reportes</a>
+						</li>
+						<ul class="navbar-nav mr-auto text-light">
+							<li class="nav-item">
+								<a class="nav-link text-light" href="../../../logout">Salir</a>
+							</li>
+						</ul>
+					</ul>
+				</div>
+			{% endblock %}
+		</nav>
+		{% block body %}{% endblock %}
+	</body>
+</html>

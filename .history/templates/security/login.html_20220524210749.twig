@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!
+{% endblock %}
+
+{% block body %}
+	<class="container">
+		{% if error %}
+			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
+
+		{% if app.user %}
+			<div class="mb-3">
+				Usted se encuentra identificado como
+				{{ app.user.username }},
+				<a href="{{ path('app_logout') }}">Salir</a>
+			</div>
+		{% endif %}
+		<div class="row centrado">
+			<div class="col-12 col-md-12 col-lg-12 ">
+				<div class="card">
+					<div class="card-header">
+						<h3>Por favor identifiquese</hr>
+					</div>
+					<div class="card-body">
+						<form method="post">
+							<div class="row">
+								<div class="col-12 col-md-12 col-lg-12">
+									<label for="username">Email:</label>
+									<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus/>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 col-md-12 col-lg-12">
+									<label for="password">Password:</label>
+									<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required/>
+									<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+								</div>
+							</div>
+							<div class="row">&nbsp;</div>
+							<div class="row">
+								<div class="col-12 col-md-12 col-lg-12 text-right">
+									<button class='btn btn-primary' type="submit">Entrar</button>
+								</div>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

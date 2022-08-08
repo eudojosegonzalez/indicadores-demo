@@ -1,0 +1,86 @@
+{% extends 'base_publico2.html.twig' %}
+
+{% block title %}Categorias de Indicadores
+{% endblock %}
+{% block javascripts %}
+	<script src="/assets/js/validacion_delete_categoria.js"></script>
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h3>Categorias de Indicadores</h3>
+		<div class="row">
+			<div class="col-12 col-md-12 col-lg-12 navigation text-center">
+				<table class="table">
+					<tr>
+						<td width='75%' class='text-center'>
+							{{ knp_pagination_render(categorias) }}
+						</td>
+						<td width='25%'>
+							<div class='input-group'>
+								<label class='input-group-text'>Cantidad de Registros</label>
+								<select id='can_reg' name='can_reg' class="form-control" onchange="javascript:pagina()">
+									{% if (canReg == 5 ) %}
+										<option value="5" selected>5</option>
+									{% else %}
+										<option value="5">5</option>
+									{% endif %}
+
+									{% if (canReg == 10 ) %}
+										<option value="10" selected>10</option>
+									{% else %}
+										<option value="10">10</option>
+									{% endif %}
+
+									{% if (canReg == 20 ) %}
+										<option value="20" selected>20</option>
+									{% else %}
+										<option value="20">20</option>
+									{% endif %}
+
+									{% if (canReg == 50 ) %}
+										<option value="50" selected>50</option>
+									{% else %}
+										<option value="50">50</option>
+									{% endif %}
+
+									{% if (canReg == 100 ) %}
+										<option value="100" selected>100</option>
+									{% else %}
+										<option value="100">100</option>
+									{% endif %}
+								</select>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<table class="table table-striped">
+			<thead>
+				<tr align='center'>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th>Org. supervigilancia/acreditación</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% set i = 1 %}
+				{% for categorium in categorias %}
+					<tr>
+						<td align='center'>{{ i }}</td>
+						<td>{{ categorium.nombre }}</td>
+						<td>{{ categorium.ente.nombre }}</td>
+					</tr>
+					{% set i = i + 1 %}
+				{% else %}
+					<tr>
+						<td colspan="4">No se han definido Categorias de Indicadores</td>
+					</tr>
+				{% endfor %}
+
+
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

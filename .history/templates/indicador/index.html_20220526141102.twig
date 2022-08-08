@@ -1,0 +1,130 @@
+{% extends 'base_dashboard_admin2.html.twig' %}
+
+{% block title %}Indicadores del Sistema
+{% endblock %}
+{% block javascripts %}
+	<script src="/assets/js/validacion_delete_indicador.js"></script>
+{% endblock %}
+{% block body %}
+	<div class="container-fluid">
+		<h3>Indicadores del Sistema</h3>
+		<div class="row">
+			<div class="col-12 col-md-10 col-lg-10 navigation text-center">
+				{{ knp_pagination_render(indicadors) }}
+			</div>
+			<div class="col-12 col-md-2 col-lg-2 navigation text-center">
+				<div class='input-group'>
+					<label class='input-group-text'>Cantidad de Registros</label>
+					<select id='can_reg' name='can_reg' class="form-control" onchange="javascript:pagina()">
+						{% if (canReg == 5 ) %}
+							<option value="5" selected>5</option>
+						{% else %}
+							<option value="5">5</option>
+						{% endif %}
+
+						{% if (canReg == 10 ) %}
+							<option value="10" selected>10</option>
+						{% else %}
+							<option value="10">10</option>
+						{% endif %}
+
+						{% if (canReg == 20 ) %}
+							<option value="20" selected>20</option>
+						{% else %}
+							<option value="20">20</option>
+						{% endif %}
+
+						{% if (canReg == 50 ) %}
+							<option value="50" selected>50</option>
+						{% else %}
+							<option value="50">50</option>
+						{% endif %}
+
+						{% if (canReg == 100 ) %}
+							<option value="100" selected>100</option>
+						{% else %}
+							<option value="100">100</option>
+						{% endif %}
+					</select>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-12 col-md-4 col-lg-4">
+				<div class='input-group'>
+					<label class='input-group-text'>Org. Certificador</label>
+					<select id='ente' name='ente' class="form-control" onchange="javascript:cambio_ente()">
+						<option value="-99">Todos</option>
+						{% for ente in entes %}
+							{% if (ente.id == ente_id) %}
+								<option value="{{ ente.id }}" selected>{{ ente.nombre }}</option>
+							{% else %}
+								<option value="{{ ente.id }}">{{ ente.nombre }}</option>
+							{% endif %}
+						{% endfor %}
+
+					</select>
+				</div>
+			</div>
+			<div class="col-12 col-md-4 col-lg-4">
+				<div class='input-group'>
+					<label class='input-group-text'>Categoria</label>
+					<select id='ente' name='ente' class="form-control" onchange="javascript:cambio_ente()">
+						<option value="-99">Todos</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-12 col-md-4 col-lg-4  text-right">
+				<input type="button" class='btn boton02' value='Filtrar'>
+				<input type='button' class="btn btn-secondary" value='Limpiar'>
+			</div>
+		</div>
+		<hr>
+		<table class="table table-striped">
+			<thead>
+				<tr align='center'>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th class='d-none  d-md-none  d-lg-none d-xl-table-cell'>Descripción</th>
+					<th class='d-none  d-md-none  d-lg-none d-xl-table-cell'>Formula</th>
+					<th class='d-none  d-md-none  d-lg-none d-xl-table-cell'>Org. Acreditador</th>
+					<th class='d-none  d-md-none  d-lg-none d-xl-table-cell'>Categoría</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% set i = 1 %}
+				{% for indicador in indicadors %}
+					<tr>
+						<td>{{ indicador.id }}</td>
+						<td>{{ indicador.nombre }}</td>
+						<td class='d-none  d-md-none  d-lg-none d-xl-table-cell'>{{ indicador.descripcion }}</td>
+						<td class='d-none  d-md-none  d-lg-none d-xl-table-cell'>{{ indicador.formula }}</td>
+						<td class='d-none  d-md-none  d-lg-none d-xl-table-cell'>{{ indicador.nombre_ente }}</td>
+						<td class='d-none  d-md-none  d-lg-none d-xl-table-cell'>{{ indicador.nombre_categoria }}</td>
+						<td align='center'>
+							<a href="{{ path('app_indicador_edit', {'id': indicador.id}) }}" title='Editar este Indicador'>
+								<i class='far fa-edit' style='font-size:22px; color:#14626f'></i>
+							</a>
+							<a href="javascript:borrar({{ indicador.id }})" title='Borrar este Indicador'>
+								<i class='fas fa-eraser' style='font-size:22px;color:red'></i>
+							</a>
+						</td>
+
+					</tr>
+					{% set i = i + 1  %}
+				{% else %}
+					<tr>
+						<td colspan="5">No se han definido indicadores</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<div class="text-right">
+			<a href="{{ path('app_indicador_new') }}" title='Crear un nuevo Indicador'>
+				<i class='fas fa-folder-open' style='font-size:22px ; color:#14626f'></i>
+			</a>
+		</div>
+	</div>
+{% endblock %}

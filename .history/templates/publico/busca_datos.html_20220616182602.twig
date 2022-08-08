@@ -1,0 +1,62 @@
+{% extends 'base_dashboard_admin3.html.twig' %}
+
+{% block title %}Carga de Datos
+{% endblock %}
+{% block javascripts %}
+	<script src="/assets/js/validacion_carga_registro.js"></script>
+	<script src="/assets/js/validacion_new_registro.js"></script>
+{% endblock %}
+{% block body %}
+	<div class="container">
+		<form method="post" id='f1' name='f1'>
+			<div class="card">
+				<div class="card-header">
+					<h3>Cargar de Datos</h3>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-12 col-md-12 col-lg-12">
+						<div class='input-group'>
+							<label class='input-group-text' for="ente">Org. supervigilancia/acreditación</label>
+							<input type="text" class="form-control" name="ente" id='ente' value='{{ ente.nombre }}' disabled>
+							<input type="hidden" name="enteid" id='enteid' value='{{ ente.id }}'>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-md-4 col-lg-4">
+						<div class='input-group'>
+							<label class='input-group-text' for='categoria'>Categoria</label>
+							<select id='categoria' name='categoria' class="form-control">
+								{% if categorias|length > 0 %}
+									{% for categoria in categorias %}
+										<option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
+									{% endfor %}
+								{% endif %}
+							</select>
+						</div>
+					</div>
+					<div class="col-12 col-md-4 col-lg-4">
+						<div class='input-group'>
+							<label class='input-group-text' for='periodo'>Periodo</label>
+							<select id='periodo' name='periodo' class="form-control">
+								{% if periodos|length > 0 %}
+									{% for periodo in periodos %}
+										<option value="{{ periodo.id }}">{{ periodo.nombre }}</option>
+									{% endfor %}
+								{% endif %}
+							</select>
+						</div>
+					</div>
+					<div class="col-12 col-md-4 col-lg-4  text-right">
+						<input type="button" class='btn boton02' value='Buscar' onclick='javascript:filtrar()'>
+						<input type='button' class="btn btn-secondary" value='Limpiar' onclick='javascript:limpiar()'>
+					</div>
+				</div>
+				<hr>
+				<div id='div001'></div>
+			</div>
+		</form>
+	</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Indicador{% endblock %}
+
+{% block body %}
+    <h1>Indicador</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ indicador.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ indicador.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Formula</th>
+                <td>{{ indicador.formula }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_indicador_index') }}">back to list</a>
+
+    <a href="{{ path('app_indicador_edit', {'id': indicador.id}) }}">edit</a>
+
+    {{ include('indicador/_delete_form.html.twig') }}
+{% endblock %}

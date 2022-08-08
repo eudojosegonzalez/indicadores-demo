@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Ente{% endblock %}
+
+{% block body %}
+    <h1>Create new Ente</h1>
+
+    {{ include('ente/_form.html.twig') }}
+
+    <a href="{{ path('app_ente_index') }}">back to list</a>
+{% endblock %}

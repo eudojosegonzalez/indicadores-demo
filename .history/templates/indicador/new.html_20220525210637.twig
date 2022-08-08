@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Indicador{% endblock %}
+
+{% block body %}
+    <h1>Create new Indicador</h1>
+
+    {{ include('indicador/_form.html.twig') }}
+
+    <a href="{{ path('app_indicador_index') }}">back to list</a>
+{% endblock %}

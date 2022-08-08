@@ -1,0 +1,38 @@
+{% extends 'base_dashboard_admin3.html.twig' %}
+
+{% block title %}Editar el Indicador
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-6 col-lg-6" style='margin:auto !important'>
+				<div class="card">
+					<div class="card-header">
+						<h3>Editar el Indicador</h3>
+					</div>
+					<div class="card-body">
+
+						<div class="row">
+							<div class="col-12 col-md-12 col-lg-12">
+								{{ include('indicador/_form.html.twig', {'button_label': 'Guardar'}) }}
+							</div>
+						</div>
+						<div class="col-12 col-md-12 col-lg-12 text-right">
+							<a href="{{ path('app_indicador_index')}}">
+								<i class='fas fa-angle-double-left' style='font-size:22px; color:#14626f'></i>
+							</a>
+						</div>
+						<div class="row">
+							<div class="col-12 col-md-12 col-lg-12 text-right">
+								{{ include('indicador/_delete_form.html.twig') }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+{% endblock %}

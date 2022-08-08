@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Org. supervigilancia/acreditación
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+		<div class="col-12 col-md-6 col-lg-6" style='margin:auto !important'>
+			<div class="card">
+				<div class="card-header">
+
+					<h3>Org. supervigilancia/acreditación</h3>
+				</div>
+				<div class="card-body">
+
+					<div class="row">
+						<div class="col-12 col-md-12 col-lg-12">
+							{{ include('ente/_form.html.twig') }}
+						</div>
+					</div>
+					<div class="col-12 col-md-12 col-lg-12 text-right">
+						<a href="{{ path('app_ente_index') }}">
+							<i class='fas fa-angle-double-left' style='font-size:22px; color:#14626f'></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ ente.id }}</td>
+			</tr>
+			<tr>
+				<th>Nombre</th>
+				<td>{{ ente.nombre }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_ente_index') }}">back to list</a>
+
+	<a href="{{ path('app_ente_edit', {'id': ente.id}) }}">edit</a>
+
+	{{ include('ente/_delete_form.html.twig') }}
+{% endblock %}

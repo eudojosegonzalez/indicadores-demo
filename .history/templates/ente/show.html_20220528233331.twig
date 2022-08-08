@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ente{% endblock %}
+
+{% block body %}
+    <h1>Ente</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ ente.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ ente.nombre }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_ente_index') }}">back to list</a>
+
+    <a href="{{ path('app_ente_edit', {'id': ente.id}) }}">edit</a>
+
+    {{ include('ente/_delete_form.html.twig') }}
+{% endblock %}

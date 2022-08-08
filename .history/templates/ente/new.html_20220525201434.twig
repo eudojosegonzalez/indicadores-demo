@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nuevo Organismo Acreditador
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-6 col-lg-6" style='margin:auto !important'>
+				<div class="card">
+					<div class="card-header">
+						<h3>Nuevo Organismo Acreditador</h3>
+					</div>
+					<div class="card-body">
+
+						<div class="row">
+							<div class="col-12 col-md-12 col-lg-12">
+								{{ include('ente/_form.html.twig') }}
+							</div>
+						</div>
+						<div class="col-12 col-md-12 col-lg-12 text-right">
+							<a href="{{ path('app_ente_index') }}">
+								<i class='fas fa-angle-double-left' style='font-size:22px; color:#14626f'></i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

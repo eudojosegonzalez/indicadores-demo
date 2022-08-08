@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Indicador{% endblock %}
+
+{% block body %}
+    <h1>Edit Indicador</h1>
+
+    {{ include('indicador/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_indicador_index') }}">back to list</a>
+
+    {{ include('indicador/_delete_form.html.twig') }}
+{% endblock %}

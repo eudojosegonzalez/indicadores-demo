@@ -1,0 +1,44 @@
+{% extends 'base_dashboard_admin2.html.twig' %}
+
+{% block title %}Organismos Acreditadores
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h3>Organismos Acreditadores</h3>
+		<table class="table table-striped">
+			<thead>
+				<tr align='center'>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% set i = 1 %}
+				{% for ente in entess %}
+					<tr>
+						<td>{{ ente.id }}</td>
+						<td>{{ ente.nombre }}</td>
+						<td>
+							<a href="{{ path('app_ente_show', {'id': ente.id}) }}">show</a>
+							<a href="{{ path('app_ente_edit', {'id': ente.id}) }}">edit</a>
+						</td>
+					</tr>
+					{% set i = i + 1  %}
+				{% else %}
+					<tr>
+						<td colspan="3">No se han definido Organismos Acreditadores</td>
+					</tr>
+				{% endfor %}
+
+
+			</tbody>
+		</table>
+		<div class="text-right">
+			<a href="{{ path('app_ente_new') }}" title='Crear un nuevo Periodo'>
+				<i class='fas fa-folder-open' style='font-size:22px ; color:#14626f'></i>
+			</a>
+		</div>
+	</div>
+{% endblock %}

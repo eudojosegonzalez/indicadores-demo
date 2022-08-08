@@ -1,0 +1,69 @@
+{% extends 'base_dashboard_admin2.html.twig' %}
+
+{% block title %}Usuarios del Sistema
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>Usuarios del Sistema</h1>
+
+		<table class="table tabled-bordered table-striped">
+			<thead>
+				<tr align='center'>
+					<th>Id</th>
+					<th>Email</th>
+					<th class=' text-center d-none  d-xl-table-cell'>Roles</th>
+					<th class=' text-center d-none  d-xl-table-cell'>Nombres</th>
+					<th class=' text-center d-none  d-xl-table-cell'>Apellidos</th>
+					<th class=' text-center d-none  d-xl-table-cell'>Estado</th>
+					<th class=' text-center d-none  d-xl-table-cell'>Nivel</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% set i = 1 %}
+				{% for user in users %}
+					<tr>
+						<td>{{ user.id }}</td>
+						<td>{{ user.email }}</td>
+						<td class=' text-center d-none  d-xl-table-cell'>{{ user.roles ? user.roles|json_encode : '' }}</td>
+						<td class=' text-left d-none  d-xl-table-cell'>{{ user.nombres }}</td>
+						<td class=' text-left d-none  d-xl-table-cell'>{{ user.apellidos }}</td>
+						<td class=' text-center d-none  d-xl-table-cell'>
+							{% if (user.estado == 1) %}
+								Activo
+							{% else %}
+								Inactivo
+							{% endif %}
+						</td>
+						<td class=' text-center d-none  d-xl-table-cell'>
+							{% if (user.nivel == 5) %}
+								Usuario
+							{% else %}
+								Administrador
+							{% endif %}
+						</td>
+						<td class='text-center'>
+							<a href="{{ path('app_user_show', {'id': user.id}) }}" title='Ver detalles de un nuevo usuario'>
+								<i class='fas fa-glasses' style='font-size:22px; color:#14626f'></i>
+							</a>
+							<a href="{{ path('app_user_edit', {'id': user.id}) }}" title='Editar un usuario'>
+								<i class='fas fa-user-edit' style='font-size:22px; color:#14626f'></i>
+							</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="8">No se han definido Usuarios</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<div class="text-right">
+			<a href="{{ path('app_user_new') }}" title='Crear un nuevo usuario'>
+				<i class='fas fa-user-plus' style='font-size:22px; color:#14626f'></i>
+			</a>
+		</div>
+
+	</div>
+{% endblock %}

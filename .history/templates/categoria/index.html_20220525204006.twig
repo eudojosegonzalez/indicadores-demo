@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categorias de Indicadores
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h3>Categorias de Indicadores</h3>
+		<table class="table table-striped">
+			<thead>
+				<tr align='center'>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th>Organismo Acreditador</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% set i = 1 %}
+				{% for categorium in categorias %}
+					<tr>
+						<td>{{ i }}</td>
+						<td>{{ categorium.nombre }}</td>
+						<td align='center'>
+							<a href="{{ path('app_ente_edit', {'id': ente.id}) }}" title='Editar este  Organismo Acreditador'>
+								<i class='far fa-edit' style='font-size:22px; color:#14626f'></i>
+							</a>
+							<a href="javascript:borrar({{ente.id }})" title='Borrar este Organismo Acreditador'>
+								<i class='fas fa-eraser' style='font-size:22px;color:red'></i>
+							</a>
+						</td>
+					</tr>
+					{% set i = i + 1 %}
+				{% else %}
+					<tr>
+						<td colspan="4">No se han definido Categorias de Indicadores</td>
+					</tr>
+				{% endfor %}
+
+
+			</tbody>
+		</table>
+		<div class="text-right">
+			<a href="{{ path('app_categoria_new') }}" title='Crear una nueva Categoría'>
+				<i class='fas fa-folder-open' style='font-size:22px ; color:#14626f'></i>
+			</a>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Periodo{% endblock %}
+
+{% block body %}
+    <h1>Create new Periodo</h1>
+
+    {{ include('periodo/_form.html.twig') }}
+
+    <a href="{{ path('app_periodo_index') }}">back to list</a>
+{% endblock %}
